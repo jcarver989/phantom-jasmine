@@ -10,11 +10,14 @@ that file loads. See below for more detail.
 Running Tests
 -------------------
 Assuming you have PhantomJs setup and installed...
+
 Clone this repository, cd into it and run:
+
     phantomjs lib/run_jasmine_test.coffee examples/TestRunner.html
 
 
 If everything works you should see output like this in your terminal:
+
     Util : should fail for the example
     Error: Expected false to be truthy.
 
