@@ -16,6 +16,11 @@ Clone this repository, cd into it and run:
     phantomjs lib/run_jasmine_test.coffee examples/TestRunner.html
 
 
+On some running OS X you might have to pass in the full url, ex:
+
+    phantomjs lib/run_jasmine_test.coffee file://localhost/Users/bob/phantom-jasmine/examples/TestRunner.html 
+
+
 If everything works you should see output like this in your terminal:
 
     Util : should fail for the example
