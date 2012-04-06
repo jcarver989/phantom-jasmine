@@ -9,23 +9,13 @@ class PhantomJasmineRunner
     @tries = 0
     @max_tries = 10
 
-  init: ->
-    setTimeout (=>
-      @inc_tries()
-      @exit_if_jasmine_done()
-    ), 100
-
   get_status: -> @page.evaluate(-> console_reporter.status)
 
-  exit_if_jasmine_done: ->
+  terminate: ->
     switch @get_status()
       when "success" then @exit_func 0
       when "fail"    then @exit_func 1
-      else
-  
-  inc_tries: ->
-    @tries += 1
-    @exit_func 1 if @tries > @max_tries
+      else                @exit_func 2
 
 # Script Begin
 if phantom.args.length == 0
@@ -33,8 +23,18 @@ if phantom.args.length == 0
   phantom.exit 1
 
 page = new WebPage()
+
+runner = new PhantomJasmineRunner(page)
+
 # Don't supress console output
-page.onConsoleMessage = (msg) -> console.log msg
+page.onConsoleMessage = (msg) ->
+  console.log msg
+
+  # Terminate when the reporter singals that testing is over.
+  # We cannot use a callback function for this (because page.evaluate is sandboxed),
+  # so we have to *observe* the website.
+  if msg == "ConsoleReporter finished"
+    runner.terminate()
 
 address = phantom.args[0]
 
@@ -43,6 +43,4 @@ page.open address, (status) ->
     console.log "can't load the address!"
     phantom.exit 1
 
-  runner = new PhantomJasmineRunner(page)
-  runner.init()
-
+  # Now we wait until onConsoleMessage reads the termination signal from the log.
