@@ -1,11 +1,26 @@
 {
-  "name"          : "phantom-jasmine",
-  "description"   : "Phantom test runner for Jasmine",
-  "keywords"      : ["testing", "bdd", "headless"],
-  "author"        : "Joshua Carver",
-  "repository"    : {"type": "git", "url": "https://github.com/jcarver989/phantom-jasmine.git"},
-  "main"          : "lib/run_jasmine_test.coffee",
-  "version"       : "0.1.0",
-  "bin"           : "./bin/phantom-jasmine",
-  "preferGlobal"  : true
+  "name": "phantom-jasmine",
+  "description": "Phantom test runner for Jasmine",
+  "keywords": [
+    "testing",
+    "bdd",
+    "headless"
+  ],
+  "author": "Joshua Carver",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jcarver989/phantom-jasmine.git"
+  },
+  "main": "lib/run_jasmine_test.coffee",
+  "version": "0.1.0",
+  "bin": {
+    "phantom-jasmine": "./bin/phantom-jasmine"
+  },
+  "preferGlobal": true,
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
 }
