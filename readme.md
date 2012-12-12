@@ -7,18 +7,22 @@ The second script lib/run_jasmine_test.coffee takes an html file as it's first a
 that file loads. See below for more detail.
 
 
-Running Tests
+Installation
 -------------------
+
 Assuming you have PhantomJs setup and installed...
 
-Clone this repository, cd into it and run:
+    sudo npm install phantom-jasmine -g
 
-    phantomjs lib/run_jasmine_test.coffee examples/TestRunner.html
 
+Running Tests
+-------------------
+
+    phantom-jasmine examples/TestRunner.html
 
 On some running OS X you might have to pass in the full url, ex:
 
-    phantomjs lib/run_jasmine_test.coffee file://localhost/Users/bob/phantom-jasmine/examples/TestRunner.html 
+    phantom-jasmine file://localhost/Users/bob/phantom-jasmine/examples/TestRunner.html 
 
 
 If everything works you should see output like this in your terminal:
@@ -32,5 +36,3 @@ If everything works you should see output like this in your terminal:
     
 
 To run your own tests with Phantom-Jasmine just look at TestRunner.html and modify/copy the script tags accordingly.
-
-
