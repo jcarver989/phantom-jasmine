@@ -12,4 +12,7 @@ var cmds = [
 
 exec(cmds.join(' '), function(err, stdout, stderr) {
   console.log(stdout);
+  if(err){
+    process.exit(1);
+  }
 });
