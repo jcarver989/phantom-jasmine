@@ -22,7 +22,7 @@ if phantom.args.length == 0
   console.log "Need a url as the argument"
   phantom.exit 1
 
-page = new WebPage()
+page = require("webpage").create()
 
 runner = new PhantomJasmineRunner(page)
 
