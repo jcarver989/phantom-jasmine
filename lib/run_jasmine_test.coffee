@@ -15,6 +15,7 @@ class PhantomJasmineRunner
     switch @get_status()
       when "success" then @exit_func 0
       when "fail"    then @exit_func 1
+      when "running" then setTimeout (=> @terminate()), 100 # wait if the status is still running
       else                @exit_func 2
 
 # Script Begin
