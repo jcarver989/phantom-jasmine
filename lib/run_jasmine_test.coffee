@@ -30,7 +30,7 @@ runner = new PhantomJasmineRunner(page)
 page.onConsoleMessage = (msg) ->
   console.log msg
 
-  # Terminate when the reporter singals that testing is over.
+  # Terminate when the reporter signals that testing is over.
   # We cannot use a callback function for this (because page.evaluate is sandboxed),
   # so we have to *observe* the website.
   if msg == "ConsoleReporter finished"
