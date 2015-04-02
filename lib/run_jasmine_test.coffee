@@ -18,14 +18,20 @@ class PhantomJasmineRunner
       else                @exit_func 2
 
 # Script Begin
-args = phantom.args
+args = undefined
 
-if !args?
+if phantom.version.major <= 1
+    args = phantom.args
+    if args.length == 0
+        console.log "Need a url as the argument"
+        phantom.exit 1
+    address = args[0]
+else
     args = require('system').args
-
-if args.length == 0
-  console.log "Need a url as the argument"
-  phantom.exit 1
+    if args.length == 1
+        console.log "Need a url as the argument"
+        phantom.exit 1
+    address = args[1]
 
 page = new WebPage()
 
@@ -40,8 +46,6 @@ page.onConsoleMessage = (msg) ->
   # so we have to *observe* the website.
   if msg == "ConsoleReporter finished"
     runner.terminate()
-
-address = args[0]
 
 page.open address, (status) ->
   if status != "success"
