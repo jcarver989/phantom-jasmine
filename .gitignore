@@ -1,0 +1,3 @@
+# don't check in compiled js from lib/run_jasmine_test.coffee
+lib/run_jasmine_test.js
+node_modules

@@ -6,7 +6,7 @@ var lib = path.join(__dirname, './../lib');
 
 var cmds = [
   'phantomjs',
-  path.join(lib, 'run_jasmine_test.coffee'),
+  path.join(lib, 'run_jasmine_test.js'),
   process.argv[2]
 ];
 
